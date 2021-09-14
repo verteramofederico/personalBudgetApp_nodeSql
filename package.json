@@ -1,0 +1,19 @@
+{
+  "name": "personalbudgetapp_nodesql",
+  "version": "1.0.0",
+  "description": "challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/verteramofederico/personalBudgetApp_nodeSql.git"
+  },
+  "author": "FV",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/verteramofederico/personalBudgetApp_nodeSql/issues"
+  },
+  "homepage": "https://github.com/verteramofederico/personalBudgetApp_nodeSql#readme"
+}
