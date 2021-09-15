@@ -1,6 +1,6 @@
 # personalBudgetApp_nodeSql
 
-Task:
+## Task:
 ~~-express server running~~
 -database sql
 -entry data form
@@ -10,6 +10,8 @@ Task:
 -responsive 
 -migrate front to react
 
-Bonus:
--auth
+## Bonus:
 -category operations
+
+## Pending future development
+-auth
