@@ -17,22 +17,19 @@ module.exports = {
       date: {
         type: Sequelize.STRING
       },
-      type: {
-        type: Sequelize.STRING
-      },
       active: {
         type: Sequelize.BIGINT(10).UNSIGNED,
         defaultValue: 1,  
         allowNull: false
-      },
+      }/* ,
       categoriesId: { 
         type: Sequelize.INTEGER,
         allowNull: true, 
         references: {
-          model: "incomeCategories  ",
+          model: "incomeCategories",
           key: "id"
         }
-      }, 
+      },  */
     });
   },
   down: async (queryInterface, Sequelize) => {

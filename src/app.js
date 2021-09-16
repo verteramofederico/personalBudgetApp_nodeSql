@@ -8,11 +8,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     res.render('home')
     }
-    )
-    
+    ) */
+
+const main = require('./routes/mainRouter');
+app.use(main)
 
 app.use(express.static('public'))
 
