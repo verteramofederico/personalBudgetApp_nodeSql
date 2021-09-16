@@ -7,7 +7,8 @@
 -delete/modify register
 -api
 -view
--responsive 
+-responsive
+-form validation front - back
 -migrate front to react
 
 ## Bonus:
