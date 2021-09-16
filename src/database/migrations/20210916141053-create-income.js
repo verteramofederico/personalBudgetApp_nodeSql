@@ -15,8 +15,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       date: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       type: {
         type: Sequelize.STRING
@@ -30,7 +29,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: true, 
         references: {
-          model: "incomeCategories",
+          model: "incomeCategories  ",
           key: "id"
         }
       }, 
