@@ -6,7 +6,7 @@ const path = require('path');
 const mainController = require("../controllers/mainController")
 
 // routes
-router.get("/", mainController.home);
-router.post("/create", mainController.create);
+router.get("/", mainController.home2);
+router.post("/create", mainController.store);
 
 module.exports = router; 

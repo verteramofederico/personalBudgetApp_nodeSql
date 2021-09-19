@@ -28,5 +28,29 @@
         <button type="submit" >Submit</button>
     </form>
 
+    <h2>Incomes</h2>
+
+    <% let sumIncomes = 0 %> 
+    <% for( let index = 0; index < incomes.length; index++ ) { %>
+        <% sumIncomes += incomes[index].amount %> 
+        <%= incomes[index].active === 1 ? incomes[index].concept : "registro eliminado" %>
+        <%= incomes[index].active === 1 ? incomes[index].amount : "registro eliminado" %>
+        <%= incomes[index].active === 1 ? incomes[index].date : "registro eliminado" %>
+        <br>    
+    <% } %>
+    <h4>Total: <%= sumIncomes %> </h4>
+
+    <h2>Expenses</h2>
+
+    <% let sumExpenses = 0 %> 
+    <% for( let index = 0; index < expenses.length; index++ ) { %>
+        <% sumExpenses += expenses[index].amount %> 
+        <%= expenses[index].active === 1 ? expenses[index].concept : "registro eliminado" %>
+        <%= expenses[index].active === 1 ? expenses[index].date : "registro eliminado" %>
+        <%= expenses[index].active === 1 ? expenses[index].amount : "registro eliminado" %>
+        <br>    
+    <% } %>
+        <h4>Total: <%= sumExpenses %> </h4>
+
 </body>
 </html>

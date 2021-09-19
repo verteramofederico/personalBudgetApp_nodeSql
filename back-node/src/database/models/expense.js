@@ -23,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
           }
   };
   let config = {
-      timestamps: true
+      timestamps: false
   }
   const Expense = sequelize.define(alias,cols,config)
   
