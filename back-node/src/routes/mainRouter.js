@@ -8,5 +8,6 @@ const mainController = require("../controllers/mainController")
 // routes
 router.get("/", mainController.home2);
 router.post("/create", mainController.store);
+router.delete('/delete/:id', mainController.delete); 
 
 module.exports = router; 

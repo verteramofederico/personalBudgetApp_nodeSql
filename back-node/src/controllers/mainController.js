@@ -47,7 +47,28 @@ const mainController = {
         catch (error) {
                 res.send(error)
             }
+        },
+    delete: async (req, res) => {
+        let idReq = req.params.id
+        try {
+            if (req.body.type === 'incomes') {
+                    const incomeToDelete = await db.Income.update(
+                        {active: 0},
+                        {where: {id: idReq}}
+                    )
+                }
+            if (req.body.type === 'expenses') {
+                    const expenseToDelete = await db.Expense.update(
+                        {active: 0},
+                        {where: {id: idReq}}
+                    )
+                }
+            return res.redirect("/")
+        } 
+        catch (error) {
+            res.send(error)
         }
+    },
     }
 
 

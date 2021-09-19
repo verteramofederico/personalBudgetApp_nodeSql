@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Balance</title>
 </head>
 <body>
@@ -34,8 +35,8 @@
     <% for( let index = 0; index < incomes.length; index++ ) { %>
         <% sumIncomes += incomes[index].amount %> 
         <%= incomes[index].active === 1 ? incomes[index].concept : "registro eliminado" %>
-        <%= incomes[index].active === 1 ? incomes[index].amount : "registro eliminado" %>
-        <%= incomes[index].active === 1 ? incomes[index].date : "registro eliminado" %>
+        <%= incomes[index].active === 1 ? incomes[index].amount : null %>
+        <%= incomes[index].active === 1 ? incomes[index].date : null %>
         <br>    
     <% } %>
     <h4>Total: <%= sumIncomes %> </h4>
@@ -46,11 +47,34 @@
     <% for( let index = 0; index < expenses.length; index++ ) { %>
         <% sumExpenses += expenses[index].amount %> 
         <%= expenses[index].active === 1 ? expenses[index].concept : "registro eliminado" %>
-        <%= expenses[index].active === 1 ? expenses[index].date : "registro eliminado" %>
-        <%= expenses[index].active === 1 ? expenses[index].amount : "registro eliminado" %>
-        <br>    
+        <%= expenses[index].active === 1 ? `$${expenses[index].amount}` : null %>
+        <%= expenses[index].active === 1 ? expenses[index].date  : null %>
+        <br>
+        <% if (expenses[index].active === 1) { %>
+            <form method="POST" action="/delete/<%= expenses[index].id %>?_method=DELETE">
+                <input type="text" name="type" value="expenses" placeholder="expenses">
+                <button type="submit">Eliminar</button>
+            </form>
+            <button class="buttonModifierForm" type="submit">modificar</button>
+
+            <form class="modifierForm" method="POST" action="/modifier/<%= expenses[index].id %>?_method=PUT">
+                <label for="concept">Concept</label>
+                <input type="text" name="concept" placeholder="<%= expenses[index].concept%>" placeholder="<%= expenses[index].concept %>">
+        
+                <label for="amount">Amount</label>
+                    <input type="text" name="amount" placeholder="<%= expenses[index].amount%>" placeholder="<%= expenses[index].amount%>">
+        
+                <label for="date">Date</label>
+                    <input type="date" name="date" min="2020-01-01" max="2022-12-31">
+        
+                <button type="submit" >Submit</button>
+            </form>
+            
+        <% } %>
+        
     <% } %>
         <h4>Total: <%= sumExpenses %> </h4>
 
+        <script src="/js/events.js"></script>
 </body>
 </html>

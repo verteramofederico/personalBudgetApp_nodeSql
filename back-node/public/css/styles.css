@@ -1,0 +1,11 @@
+* {
+    background-color: rgb(203, 244, 230);
+}
+
+.modifierForm {
+    display: none
+}
+
+.displayModifierForm {
+    display: inline
+}
