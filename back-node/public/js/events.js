@@ -5,7 +5,8 @@ window.onload = function() {
     let buttonModifierForm = document.getElementById("buttonModifierForm")
 
     buttonModifierForm.addEventListener("click", (e) => {
+        console.log("ok")
         e.preventDefault()
         modifierForm.classList.toggle("modifierForm")
     })
-}
+}   

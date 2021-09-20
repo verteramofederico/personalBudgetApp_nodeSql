@@ -14,6 +14,8 @@ app.use(method("_method"))
 
 const main = require('./routes/mainRouter');
 app.use(main)
+const apiRouter = require('./routes/api/APIRouter')
+app.use('/api',apiRouter);
 
 app.use(express.static('public'))
 

@@ -9,3 +9,23 @@
 .displayModifierForm {
     display: inline
 }
+
+.conceptContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.incomesContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.expensesContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.incomeOrExpense {
+    display: flex;
+    flex-direction: column;
+}

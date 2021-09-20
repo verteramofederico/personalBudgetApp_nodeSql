@@ -37,7 +37,30 @@
         <%= incomes[index].active === 1 ? incomes[index].concept : "registro eliminado" %>
         <%= incomes[index].active === 1 ? incomes[index].amount : null %>
         <%= incomes[index].active === 1 ? incomes[index].date : null %>
-        <br>    
+        <br>
+        <% if (incomes[index].active === 1) { %>
+            <form class="deleteForm" method="POST" action="/delete/<%= incomes[index].id %>?_method=DELETE">
+                <input class="modifierForm" type="text" name="type" value="incomes" placeholder="incomes">
+                <button type="submit">Delete</button>
+            </form>
+            <button id="buttonModifierForm" class="buttonModifierForm" type="submit">Edit</button>
+
+            <form id="modifierForm" class="modifierForm" method="POST" action="/modifier/<%= incomes[index].id %>?_method=PUT">
+                <input class="modifierForm" type="text" name="type" value="incomes" placeholder="incomes">
+                <label for="concept">Concept</label>
+                <input type="text" name="concept" value="<%= incomes[index].concept%>" placeholder="<%= incomes[index].concept %>">
+                
+                <label for="amount">Amount</label>
+                    <input type="text" name="amount" value="<%= incomes[index].amount%>" placeholder="<%= incomes[index].amount%>">
+        
+                <label for="date">Date</label>
+                    <input type="date" name="date" min="2020-01-01" max="2022-12-31">
+        
+                <button type="submit" >Submit</button>
+            </form>
+            
+        <% } %>
+            
     <% } %>
     <h4>Total: <%= sumIncomes %> </h4>
 
@@ -51,7 +74,7 @@
         <%= expenses[index].active === 1 ? expenses[index].date  : null %>
         <br>
         <% if (expenses[index].active === 1) { %>
-            <form method="POST" action="/delete/<%= expenses[index].id %>?_method=DELETE">
+            <form class="deleteForm" method="POST" action="/delete/<%= expenses[index].id %>?_method=DELETE">
                 <input class="modifierForm" type="text" name="type" value="expenses" placeholder="expenses">
                 <button type="submit">Delete</button>
             </form>
