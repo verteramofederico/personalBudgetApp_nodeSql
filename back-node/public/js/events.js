@@ -6,6 +6,6 @@ window.onload = function() {
 
     buttonModifierForm.addEventListener("click", (e) => {
         e.preventDefault()
-        modifierForm.classList.remove("modifierForm")
+        modifierForm.classList.toggle("modifierForm")
     })
 }

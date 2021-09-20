@@ -48,6 +48,35 @@ const mainController = {
                 res.send(error)
             }
         },
+    modifier: async (req, res) => {
+        let idReq = req.params.id
+        try {
+            if (req.body.type === 'incomes') {
+                    const incomeToDelete = await db.Income.update(
+                        {
+                            concept: req.body.concept,
+                            amount: req.body.amount,
+                            date: req.body.date
+                        },
+                        {where: {id: idReq}}
+                    )
+                }
+            if (req.body.type === 'expenses') {
+                    const expenseToDelete = await db.Expense.update(
+                        {
+                            concept: req.body.concept,
+                            amount: req.body.amount,
+                            date: req.body.date
+                        },
+                        {where: {id: idReq}}
+                    )
+                }
+            return res.redirect("/")
+        } 
+        catch (error) {
+            res.send(error)
+        }
+    },   
     delete: async (req, res) => {
         let idReq = req.params.id
         try {
