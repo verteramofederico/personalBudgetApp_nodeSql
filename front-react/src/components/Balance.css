@@ -1,0 +1,17 @@
+.balanceHeader {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: 240;
+    padding: .375rem .75rem ;
+    border-radius: .25rem ;
+    font-size: 1.2em;
+}
+
+.balanceAmount {
+    background-color: #198754;
+    color: white;
+    font-weight: 200;
+    padding: .375rem .75rem ;
+    border-radius: .25rem ;
+    font-size: 1em;
+}
