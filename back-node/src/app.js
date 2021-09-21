@@ -1,14 +1,15 @@
 let express = require('express');
+var cors = require('cors')
 let path = require('path');
 let app = express();
 const method = require('method-override'); // put  delete. NPM I method-override
 
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
+app.use(cors())
 app.use(express.urlencoded({extended: true}))
 app.use(method("_method")) 
 

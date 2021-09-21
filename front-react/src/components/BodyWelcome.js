@@ -1,5 +1,5 @@
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import BodyWelcomeCss from './BodyWelcome.css'
+import './BodyWelcome.css'
 
 function BodyWelcome() {
     return (

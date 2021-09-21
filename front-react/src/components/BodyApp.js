@@ -1,14 +1,17 @@
-import {Table} from 'react-bootstrap/';
-import Incomes from './Incomes'
-import Expenses from './Expenses'
-import BodyAppCss from './BodyApp.css'
+import IncomesTable from './IncomesTable'
+import ExpensesTable from './ExpensesTable'
+import EntryForm from './EntryForm'
+import './BodyApp.css'
 
 function BodyApp() {
     return (
     <>
+        <section>
+        <EntryForm/>
+        </section>
         <section className="tableContainer">
-        <Incomes/>
-        <Expenses/>
+        <IncomesTable/>
+        <ExpensesTable/>
         </section> 
 
     </>
