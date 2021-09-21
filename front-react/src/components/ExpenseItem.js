@@ -30,7 +30,7 @@ function ExpenseItem(props) {
                 <td>{id}</td>
                 <td>{concept}</td>
                 <td>{amount}</td>
-                <td class="dateTable">{date}</td>
+                <td className="dateTable">{date}</td>
                 <td>
                 <form onSubmit={handleSubmitEdit}>
                 <Button type="submit" variant="outline-secondary">Edit</Button>

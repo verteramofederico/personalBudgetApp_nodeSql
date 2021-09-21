@@ -8,10 +8,17 @@
 }
 
 .balanceAmount {
-    background-color: #198754;
     color: white;
     font-weight: 200;
     padding: .375rem .75rem ;
     border-radius: .25rem ;
     font-size: 1em;
+}
+
+.positive {
+    background-color: #198754;
+}
+
+.negative {
+    background-color: rgb(215, 65, 65);
 }
