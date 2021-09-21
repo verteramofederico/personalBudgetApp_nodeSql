@@ -1,6 +1,8 @@
 import {React, useState} from 'react';
 import './IncomesExpenses.css'
 import EditItemForm from './EditItemForm'
+import {Button} from 'react-bootstrap';
+
 
 function IncomeItem(props) {
     
@@ -34,16 +36,16 @@ function IncomeItem(props) {
             <td>{id}</td>
             <td>{concept}</td>
             <td>{amount}</td>
-            <td>{date}</td>
+            <td className="dateTable">{date}</td>
             <td>
             <form onSubmit={handleSubmitEdit}>
-            <button type="submit">Edit</button>
+            <Button type="submit" variant="outline-secondary">Edit</Button>
             </form>
 
             {checkEdit!==0?(<EditItemForm/>):(null)}
 
             <form onSubmit={handleSubmitDelete}>
-            <button type="submit">Delete</button>
+            <Button type="submit" variant="outline-secondary">Delete</Button>
             </form>
             </td>
             </tr>

@@ -22,16 +22,16 @@ function ExpensesTable() {
             <th>#</th>
             <th>Concept</th>
             <th>Amount</th>
-            <th>Date</th>
+            <th className="dateTable">Date</th>
             <th>Modify</th>
             </tr>
         </thead>
-        <tfoot>
+        <tfoot className="bottonTable">
             <tr>
             <th>#</th>
             <th>Concept</th>
             <th>Amount</th>
-            <th>Date</th>
+            <th className="dateTable">Date</th>
             <th>Modify</th>
             </tr>
         </tfoot>

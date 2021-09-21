@@ -1,3 +1,9 @@
 .JumbotronCss {
     padding: 10px;
 }
+
+
+
+.jumbotron {
+    padding: 40px 20px 20px 20px !important; 
+}

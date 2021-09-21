@@ -16,22 +16,23 @@ function IncomesTable() {
     return (
     <section className="table">
         <h3>Incomes</h3>
+        <div className="">
         <Table striped bordered hover>
         <thead>
             <tr>
             <th>#</th>
             <th>Concept</th>
             <th>Amount</th>
-            <th>Date</th>
+            <th className="dateTable">Date</th>
             <th>Modify</th>
             </tr>
         </thead>
-        <tfoot>
+        <tfoot className="bottonTable">
             <tr>
             <th>#</th>
             <th>Concept</th>
             <th>Amount</th>
-            <th>Date</th>
+            <th className="dateTable">Date</th>
             <th>Modify</th>
             </tr>
         </tfoot>
@@ -48,6 +49,7 @@ function IncomesTable() {
             }
         </tbody>
         </Table>
+        </div>
 
     </section>
     );

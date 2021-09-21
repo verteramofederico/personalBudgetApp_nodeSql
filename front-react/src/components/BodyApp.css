@@ -1,4 +1,7 @@
-.tableContainer {
-    display: flex;
-    padding: 10px
-}
+@media (min-width: 1200px) {
+    #tableContainer {
+        display: flex;
+        padding: 10px
+    }
+  }
+

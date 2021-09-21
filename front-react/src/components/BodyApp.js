@@ -6,11 +6,11 @@ import './BodyApp.css'
 function BodyApp() {
     return (
     <>
-        <section>
+        <section className="container">
         <EntryForm/>
         </section>
-        <section className="tableContainer">
-        <IncomesTable/>
+        <section className="container" id="tableContainer">
+        <IncomesTable/> 
         <ExpensesTable/>
         </section> 
 
