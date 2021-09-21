@@ -1,9 +1,15 @@
+import BodyWelcome from './BodyWelcome'
+import NavBar from './NavBar'
+import BodyApp from './BodyApp'
+
 
 function App() {
   return (
-    <>
-      <h3>Front React</h3>
-    </>
+    <div className="container">    
+      <NavBar/>  
+      <BodyWelcome/> 
+      <BodyApp/> 
+    </div>
   );
 }
 
