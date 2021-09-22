@@ -1,3 +1,5 @@
+import {Button} from 'react-bootstrap';
+
 function EntryForm() {
     return (
     <>
@@ -17,7 +19,7 @@ function EntryForm() {
         <label htmlFor="date">Date</label>
             <input type="date" name="date" min="2020-01-01" max="2022-12-31" />
 
-        <button type="submit" >Submit</button>
+        <Button type="submit" variant="outline-secondary"> Submit </Button>
     </form>
 
     </>

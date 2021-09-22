@@ -11,19 +11,19 @@ function BodyApp() {
 
     function showLast10(e) {
         e.preventDefault();
-        if (toShow !== 0) {setToShow(0)} 
-        else {setToShow(3) } 
+        if (toShow !== 3) {setToShow(3)} 
+        else {setToShow(0) } 
         
     }
     function showIncomes(e) {
         e.preventDefault();
         if (toShow !== 1) {setToShow(1)} 
-        else {setToShow(3) } 
+        else {setToShow(0) } 
     }
     function showExpenses(e) {
         e.preventDefault();
         if (toShow !== 2) {setToShow(2)} 
-        else {setToShow(3) } 
+        else {setToShow(0) } 
     }
 
 
@@ -40,7 +40,7 @@ function BodyApp() {
                     <Button type="submit" variant="outline-secondary"> Show Expenses </Button>
             </form>
         </section>
-        {toShow === 0? (<Last10/>):(null)}
+        {toShow === 3? (<Last10/>):(null)}
         {toShow === 1? (<IncomesTable/>):(null)}
         {toShow === 2? (<ExpensesTable/>):(null)}
     </>

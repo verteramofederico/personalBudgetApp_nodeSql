@@ -32,12 +32,13 @@
     <h2>Incomes</h2>
 
     <% let sumIncomes = 0 %> 
+    <% let eliminadoIncomes = 0 %> 
     <% for( let index = 0; index < incomes.length; index++ ) { %>
-        <% sumIncomes += incomes[index].amount %> 
-        <%= incomes[index].active === 1 ? incomes[index].concept : "registro eliminado" %>
+        <%  incomes[index].active === 1 ? (sumIncomes += incomes[index].amount) : null %> 
+        <% incomes[index].active === 1 ? incomes[index].concept : (eliminadoIncomes += 1) %>
+        <%= incomes[index].active === 1 ? incomes[index].concept : null %>
         <%= incomes[index].active === 1 ? incomes[index].amount : null %>
         <%= incomes[index].active === 1 ? incomes[index].date : null %>
-        <br>
         <% if (incomes[index].active === 1) { %>
             <form class="deleteForm" method="POST" action="/delete/<%= incomes[index].id %>?_method=DELETE">
                 <input class="modifierForm" type="text" name="type" value="incomes" placeholder="incomes">
@@ -63,16 +64,19 @@
             
     <% } %>
     <h4>Total: <%= sumIncomes %> </h4>
+    <h4>Registros eliminados: <%= eliminadoIncomes %> </h4>
 
     <h2>Expenses</h2>
 
     <% let sumExpenses = 0 %> 
+    <% let eliminadoExpenses = 0 %> 
+    
     <% for( let index = 0; index < expenses.length; index++ ) { %>
-        <% sumExpenses += expenses[index].amount %> 
-        <%= expenses[index].active === 1 ? expenses[index].concept : "registro eliminado" %>
+        <%  expenses[index].active === 1 ? (sumExpenses += expenses[index].amount) : null %>
+        <%  expenses[index].active === 1 ? (eliminadoExpenses += 1) : null %>
+        <%= expenses[index].active === 1 ? expenses[index].concept  : null %> 
         <%= expenses[index].active === 1 ? `$${expenses[index].amount}` : null %>
         <%= expenses[index].active === 1 ? expenses[index].date  : null %>
-        <br>
         <% if (expenses[index].active === 1) { %>
             <form class="deleteForm" method="POST" action="/delete/<%= expenses[index].id %>?_method=DELETE">
                 <input class="modifierForm" type="text" name="type" value="expenses" placeholder="expenses">
@@ -98,6 +102,7 @@
         
     <% } %>
         <h4>Total: <%= sumExpenses %> </h4>
+        <h4>Registros eliminados: <%= eliminadoExpenses %> </h4>
 
         <script src="/js/events.js"></script>
 </body>
