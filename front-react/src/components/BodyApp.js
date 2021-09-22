@@ -1,8 +1,7 @@
-import IncomesTable from './IncomesTable'
-import ExpensesTable from './ExpensesTable'
+import {React} from 'react';
 import Balance from "./Balance"
 import EntryForm from './EntryForm'
-import './BodyApp.css'
+import ShowList from './ShowList'
 
 function BodyApp() {
     return (
@@ -13,9 +12,8 @@ function BodyApp() {
         <section className="container" >
         <EntryForm/>
         </section>
-        <section className="container" id="tableContainer">
-        <IncomesTable/> 
-        <ExpensesTable/>
+        <section className="container">
+        <ShowList/>
         </section> 
 
     </>

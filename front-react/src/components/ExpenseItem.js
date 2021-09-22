@@ -29,7 +29,7 @@ function ExpenseItem(props) {
             {props.expense !== undefined ? (<tr>
                 <td>{id}</td>
                 <td>{concept}</td>
-                <td>{amount}</td>
+                <td>${amount}</td>
                 <td className="dateTable">{date}</td>
                 <td>
                 <form onSubmit={handleSubmitEdit}>

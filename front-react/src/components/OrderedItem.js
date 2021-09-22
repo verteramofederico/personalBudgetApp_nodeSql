@@ -4,12 +4,14 @@ import EditItemForm from './EditItemForm'
 import {Button} from 'react-bootstrap';
 
 
-function IncomeItem(props) {
+function OrderedItem(props) {
+    console.log(props.item)
     
-    let id = props.income.id
-    let amount = props.income.amount
-    let concept = props.income.concept
-    let date = props.income.date
+    let id = props.item.id
+    let type = props.item.type
+    let amount = props.item.amount
+    let concept = props.item.concept
+    let date = props.item.date
 
     const [checkEdit, setcheckEdit] = useState (0)
 
@@ -19,21 +21,18 @@ function IncomeItem(props) {
         if (checkEdit ===0) {setcheckEdit(1)} else {setcheckEdit(0)} 
     }
     
-
     function handleSubmitDelete(e) {
         e.preventDefault();
         console.log('You clicked Delete.');
     }
 
-
-
-
     return (
     <>    
-            {props.income === undefined ? (<p>cargando</p>)
+            {props.item === undefined ? (<p>cargando</p>)
             : (
             <tr>
             <td>{id}</td>
+            <td>{type}</td>
             <td>{concept}</td>
             <td>${amount}</td>
             <td className="dateTable">{date}</td>
@@ -56,4 +55,4 @@ function IncomeItem(props) {
     );
 }
 
-export default IncomeItem;
+export default OrderedItem;

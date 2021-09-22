@@ -12,7 +12,12 @@ const APIController = {
             const expenses = await db.Expense.findAll({where:{active: 1}})
 
             incomes.forEach(income =>{
+                income.dataValues.type= "Income";
                 income.dataValues.detail = `http://localhost:3001/api/${income.id}`;
+            }); 
+            expenses.forEach(expense =>{
+                expense.dataValues.type= "Expense";
+                expense.dataValues.detail = `http://localhost:3001/api/${expense.id}`;
             }); 
 
             res.status(200).json({status:200, incomes: {incomes}, expenses: {expenses}})

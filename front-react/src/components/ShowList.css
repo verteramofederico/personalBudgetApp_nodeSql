@@ -1,0 +1,16 @@
+.formButtons {
+    display: flex;
+    justify-content: space-around; 
+    font-size: 1.2em;
+    padding: 10px
+}
+
+.formButtons Button {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    
+}
+
+.formButtons * {
+    
+}
