@@ -3,7 +3,7 @@ import {Table} from 'react-bootstrap/';
 import './IncomesExpenses.css'
 import OrderedItem from "./OrderedItem"
 
-function Last10() {
+function ShowListItem(props) {
     const [expensesApi, setExpensesApi] = useState ([])
     const [incomesApi, setIncomesApi] = useState ([])
 
@@ -43,6 +43,7 @@ function Last10() {
             <th>Type</th>
             <th>Concept</th>
             <th>Amount</th>
+            <th>Category</th>
             <th className="dateTable">Date</th>
             <th>Modify</th>
             </tr>
@@ -53,21 +54,27 @@ function Last10() {
             <th>Type</th>
             <th>Concept</th>
             <th>Amount</th>
+            <th>Category</th>
             <th className="dateTable">Date</th>
             <th>Modify</th>
             </tr>
         </tfoot>
         <tbody>
-            {
-            listAllInOrder.length > 0 ? (
+            {props.option === 0 && listAllInOrder.length > 0 ? (
                 listAllInOrder.map( (row, i) => {
-                return <OrderedItem key={i} item={row} />
-            }))
-            : (
-                null
-            )
-
-            }
+                    return <OrderedItem key={i} item={row} />
+                })
+            ) : null } 
+            {props.option === 1 && incomesApi.length > 0  ? (
+                incomesApi.map( (row, i) => {
+                    return <OrderedItem key={i} item={row} />
+                })
+            ) : null } 
+            {props.option === 2 && expensesApi.length > 0 ? (
+                expensesApi.map( (row, i) => {
+                    return <OrderedItem key={i} item={row} />
+                })
+            ): null } 
         </tbody>
         </Table>
         </div>
@@ -77,4 +84,4 @@ function Last10() {
     );
 }
 
-export default Last10;
+export default ShowListItem;

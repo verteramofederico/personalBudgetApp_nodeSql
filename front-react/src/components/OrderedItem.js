@@ -9,6 +9,7 @@ function OrderedItem(props) {
     let id = props.item.id
     let type = props.item.type
     let amount = props.item.amount
+    let category = props.item.categoriesId
     let concept = props.item.concept
     let date = props.item.date
 
@@ -32,6 +33,7 @@ function OrderedItem(props) {
             <td>{type}</td>
             <td>{concept}</td>
             <td>${amount}</td>
+            <td>{category}</td>
             <td className="dateTable">{date}</td>
             <td>
             <form onSubmit={handleSubmitEdit}>

@@ -1,7 +1,5 @@
 import {React, useState} from 'react';
-import IncomesTable from './IncomesTable'
-import ExpensesTable from './ExpensesTable'
-import Last10 from './Last10'
+import ShowListItem from './ShowListItem';
 import {Button} from 'react-bootstrap';
 import  './ShowList.css'
 
@@ -40,9 +38,9 @@ function BodyApp() {
                     <Button type="submit" variant="outline-secondary"> Show Expenses </Button>
             </form>
         </section>
-        {toShow === 3? (<Last10/>):(null)}
-        {toShow === 1? (<IncomesTable/>):(null)}
-        {toShow === 2? (<ExpensesTable/>):(null)}
+        {toShow === 3? (<ShowListItem option={0}/>):(null)}
+        {toShow === 1? (<ShowListItem option={1}/>):(null)}
+        {toShow === 2? (<ShowListItem option={2}/>):(null)}
     </>
     );
 }
