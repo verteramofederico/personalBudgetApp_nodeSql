@@ -13,16 +13,6 @@ function IncomesTable() {
             setIncomesApi(data.incomes.incomes)})
         }, []);
 
-        /* useEffect(() => {
-            fetch("http://localhost:3001/api/",{
-                method: "POST",
-                body: JSON.stringify({dd: ""})
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                setIncomesApi(data.incomes.incomes)})
-            }, []); */
-
     return (
     <section className="table">
         <h3>Incomes</h3>

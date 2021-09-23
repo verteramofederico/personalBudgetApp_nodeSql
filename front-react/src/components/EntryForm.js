@@ -1,13 +1,33 @@
+import {React, useState} from 'react';
 import {Button} from 'react-bootstrap';
 
 function EntryForm() {
+
+    const [data, setData] = useState ([])
+    
+    function handleSubmitEdit (e) {
+            e.preventDefault()
+            setData({
+                    type: e.target.type.value,
+                    concept: e.target.concept.value,
+                    amount: e.target.amount.value,
+                    date: e.target.date.value});
+            fetch('http://localhost:3001/api/create', {
+                method: 'POST',
+                body: JSON.stringify({ data }),
+                headers: { 'Content-Type': 'application/json' },
+            })           
+                } 
+                
+            console.log(data)
+                
     return (
     <>
-        <form method="POST" action="/create">
+        <form onSubmit={handleSubmitEdit} method="POST" action="/create">
         <label htmlFor="type">Type</label>
             <select name="type" >
-                <option value="{income}">Income</option>
-                <option value="{expense}">Expense</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
             </select>
 
         <label htmlFor="concept">Concept</label>

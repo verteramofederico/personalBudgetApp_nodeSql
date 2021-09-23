@@ -25,8 +25,7 @@ const APIController = {
         }catch (error) {
             throw error;
         }
-    }
-    ,
+    },
     detail: async (req, res) => {
         try {
             const income = await db.Income.findByPk(req.params.id);
@@ -37,7 +36,30 @@ const APIController = {
         } catch (error) {
             throw error;
         }
-    }
+    },
+    store: async (req, res) => {
+        try {
+            console.log(req.body)
+            if (req.body.type === 'income') {
+                    const income = await db.Income.create({
+                    concept: req.body.concept,
+                    amount: req.body.amount,
+                    date: req.body.date
+                })
+            }
+            
+            if (req.body.type === 'expense') {
+                    const income = await db.Expense.create({
+                    concept: req.body.concept,
+                    amount: req.body.amount,
+                    date: req.body.date
+                })
+            }
+            }
+        catch (error) {
+                res.send(error)
+            }
+        }, 
 }
 
 module.exports = APIController;

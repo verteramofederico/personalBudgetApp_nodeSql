@@ -5,8 +5,7 @@ import {Button} from 'react-bootstrap';
 
 
 function OrderedItem(props) {
-    console.log(props.item)
-    
+
     let id = props.item.id
     let type = props.item.type
     let amount = props.item.amount
@@ -17,13 +16,11 @@ function OrderedItem(props) {
 
     function handleSubmitEdit(e) {
         e.preventDefault();
-        console.log('You clicked submit.')
         if (checkEdit ===0) {setcheckEdit(1)} else {setcheckEdit(0)} 
     }
     
     function handleSubmitDelete(e) {
         e.preventDefault();
-        console.log('You clicked Delete.');
     }
 
     return (

@@ -19,13 +19,20 @@ module.exports = (sequelize, dataTypes) => {
           active: {
           type: dataTypes.BIGINT(10).UNSIGNED,
           defaultValue: 1,  
-          allowNull: false
+          allowNull: true
           }
   };
   let config = {
       timestamps: false
   }
   const Expense = sequelize.define(alias,cols,config)
+
+      Expense.associate = (models) =>{
+        Expense.belongsTo(models.ExpenseCategory, {
+        as: "ExpensesCategories",
+        foreignKey: "categoriesId"
+    })
+    }
   
   return Expense
 }

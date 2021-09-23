@@ -26,6 +26,9 @@
         <label for="date">Date</label>
             <input type="date" name="date" min="2020-01-01" max="2022-12-31">
 
+        <label for="type">Category</label>
+        <input type="number" name="category">
+
         <button type="submit" >Submit</button>
     </form>
 
@@ -39,6 +42,7 @@
         <%= incomes[index].active === 1 ? incomes[index].concept : null %>
         <%= incomes[index].active === 1 ? incomes[index].amount : null %>
         <%= incomes[index].active === 1 ? incomes[index].date : null %>
+        <%= incomes[index].active === 1 ? incomes[index].categoriesId : null %>
         <% if (incomes[index].active === 1) { %>
             <form class="deleteForm" method="POST" action="/delete/<%= incomes[index].id %>?_method=DELETE">
                 <input class="modifierForm" type="text" name="type" value="incomes" placeholder="incomes">
@@ -77,6 +81,7 @@
         <%= expenses[index].active === 1 ? expenses[index].concept  : null %> 
         <%= expenses[index].active === 1 ? `$${expenses[index].amount}` : null %>
         <%= expenses[index].active === 1 ? expenses[index].date  : null %>
+        <%= expenses[index].active === 1 ? expenses[index].categoriesId  : null %>
         <% if (expenses[index].active === 1) { %>
             <form class="deleteForm" method="POST" action="/delete/<%= expenses[index].id %>?_method=DELETE">
                 <input class="modifierForm" type="text" name="type" value="expenses" placeholder="expenses">

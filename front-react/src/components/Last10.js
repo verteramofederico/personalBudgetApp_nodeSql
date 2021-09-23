@@ -30,9 +30,6 @@ function Last10() {
         return 1;
         return 0;
     })
-    console.log(listAllInOrder)
-
-
 
     return (
     <section className="table">

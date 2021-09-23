@@ -15,14 +15,12 @@ function IncomeItem(props) {
 
     function handleSubmitEdit(e) {
         e.preventDefault();
-        console.log('You clicked submit.')
         if (checkEdit ===0) {setcheckEdit(1)} else {setcheckEdit(0)} 
     }
     
 
     function handleSubmitDelete(e) {
         e.preventDefault();
-        console.log('You clicked Delete.');
     }
 
 

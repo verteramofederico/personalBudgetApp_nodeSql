@@ -32,7 +32,8 @@ const mainController = {
                     const income = await db.Income.create({
                     concept: req.body.concept,
                     amount: req.body.amount,
-                    date: req.body.date
+                    date: req.body.date,
+                    categoriesId: req.body.category
                 })
                 return res.redirect("/")}
             
@@ -40,7 +41,8 @@ const mainController = {
                     const income = await db.Expense.create({
                     concept: req.body.concept,
                     amount: req.body.amount,
-                    date: req.body.date
+                    date: req.body.date,
+                    categoriesId: req.body.category
                 })
                 return res.redirect("/")}
             }

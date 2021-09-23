@@ -21,15 +21,15 @@ module.exports = {
         type: Sequelize.BIGINT(10).UNSIGNED,
         defaultValue: 1,  
         allowNull: false
-      }/* ,
+      },
       categoriesId: { 
         type: Sequelize.INTEGER,
         allowNull: true, 
         references: {
-          model: "expenseCategories",
+          model: "ExpensesCategories",
           key: "id"
         }
-      },  */
+      }, 
     });
   },
   down: async (queryInterface, Sequelize) => {
