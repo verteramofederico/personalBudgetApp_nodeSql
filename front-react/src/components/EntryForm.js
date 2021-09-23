@@ -1,8 +1,7 @@
 import {React, useState} from 'react';
 import {Button} from 'react-bootstrap';
-import IncomeForm from "./IncomeForm"
-import ExpenseForm from "./ExpenseForm"
 import "./EntryForm.css"
+import FormProps from "./FormProps"
 
 function EntryForm() {
 
@@ -36,8 +35,12 @@ function EntryForm() {
             ) : null}       
         </section>
 
-        {select === 1 ? (<IncomeForm />) : null}
-        {select === 2 ? (<ExpenseForm />) : null}
+        {select === 2 ? (<FormProps type="expense" category={[
+            "Other Exp.", "House","Clothes","Health"
+        ]}/>) : null}
+        {select === 1 ? (<FormProps type="income" category={[
+            "Other Inc.", "Job","Freelance","Donations"
+        ]}/>) : null}
 
     </>
     );

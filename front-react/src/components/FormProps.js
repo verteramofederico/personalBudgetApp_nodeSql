@@ -1,14 +1,13 @@
 import {React, useState} from 'react';
 import {Button} from 'react-bootstrap';
 
-function ExpenseForm() {
-
+function FormProps(props) {
     const [data, setData] = useState ([])
 
     function handleSubmitEdit (e) {
             e.preventDefault()
             setData({
-                    type: "expense",
+                    type: props.type,
                     concept: e.target.concept.value,
                     amount: e.target.amount.value,
                     date: e.target.date.value,
@@ -25,14 +24,14 @@ function ExpenseForm() {
     <>
 
 
-    <form onSubmit={handleSubmitEdit} method="POST" action="/create">
+<form onSubmit={handleSubmitEdit} method="POST" action="/create">
         
         <label htmlFor="category">Category</label>
             <select name="category" >
-                <option value="4">Other Exp.</option>
-                <option value="1">House</option>
-                <option value="2">Clothes</option>
-                <option value="3">Health</option>                
+                <option value="4">{props.category[0]}</option>
+                <option value="1">{props.category[1]}</option>
+                <option value="2">{props.category[2]}</option>
+                <option value="3">{props.category[3]}</option>                
             </select>
 
         <label htmlFor="concept">Concept</label>
@@ -51,4 +50,4 @@ function ExpenseForm() {
     );
 }
 
-export default ExpenseForm;
+export default FormProps;
