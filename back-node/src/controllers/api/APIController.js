@@ -8,8 +8,12 @@ const { Op } = sequelize;
 const APIController = {
     index: async (req, res) => {
         try {
-            const incomes = await db.Income.findAll({where:{active: 1}})  
-            const expenses = await db.Expense.findAll({where:{active: 1}})
+            const incomes = await db.Income.findAll({
+                //include: 'IncomesCategories',
+                where:{active: 1}})  
+            const expenses = await db.Expense.findAll({
+                //include: 'ExpensesCategories',
+                where:{active: 1}})
 
             incomes.forEach(income =>{
                 income.dataValues.type= "Income";
@@ -44,7 +48,8 @@ const APIController = {
                     const income = await db.Income.create({
                     concept: req.body.concept,
                     amount: req.body.amount,
-                    date: req.body.date
+                    date: req.body.date,
+                    categoriesId: req.body.category
                 })
             }
             
@@ -52,7 +57,8 @@ const APIController = {
                     const income = await db.Expense.create({
                     concept: req.body.concept,
                     amount: req.body.amount,
-                    date: req.body.date
+                    date: req.body.date,
+                    categoriesId: req.body.category
                 })
             }
             }

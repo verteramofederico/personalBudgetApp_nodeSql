@@ -41,7 +41,7 @@ function EditItemFrom(props) {
             <input type="text"  name="amount" placeholder={props.amount} />
 
         <label htmlFor="date">Date</label>
-            <input type="date" placeholder={props.date} name="date" min="2020-01-01" max="2022-12-31" />
+            <input type="date" value={props.date} name="date" min="2020-01-01" max="2022-12-31" />
 
         <Button type="submit" variant="outline-secondary"> Submit </Button>
     </form>
