@@ -1,46 +1,43 @@
 import {React, useState} from 'react';
 import {Button} from 'react-bootstrap';
+import IncomeForm from "./IncomeForm"
+import ExpenseForm from "./ExpenseForm"
+import "./EntryForm.css"
 
 function EntryForm() {
 
-    const [data, setData] = useState ([])
-    
-    function handleSubmitEdit (e) {
-            e.preventDefault()
-            setData({
-                    type: e.target.type.value,
-                    concept: e.target.concept.value,
-                    amount: e.target.amount.value,
-                    date: e.target.date.value});
-            fetch('http://localhost:3001/api/create', {
-                method: 'POST',
-                body: JSON.stringify({ data }),
-                headers: { 'Content-Type': 'application/json' },
-            })           
-                } 
-                
-            console.log(data)
-                
+    const [select, setSelect] = useState (0)
+
+        function selectIncomeAdd(e) {
+            e.preventDefault();
+            if (select !== 1) {setSelect(1)} 
+            else {setSelect(0) } 
+            
+        }
+        function selectExpenseAdd(e) {
+            e.preventDefault();
+            if (select !== 2) {setSelect(2)} 
+            else {setSelect(0) }         
+        }     
+
     return (
     <>
-        <form onSubmit={handleSubmitEdit} method="POST" action="/create">
-        <label htmlFor="type">Type</label>
-            <select name="type" >
-                <option value="income">Income</option>
-                <option value="expense">Expense</option>
-            </select>
+        <section className="selectForm">
+            {select !== 2 ? (
+            <form onSubmit={selectIncomeAdd}>
+            <Button type="submit" variant="outline-secondary"> Add Income </Button>
+            </form>
+            ) : null}
 
-        <label htmlFor="concept">Concept</label>
-            <input type="text" name="concept" placeholder="Ej: lunch" />
+            {select !== 1 ? (
+            <form onSubmit={selectExpenseAdd}>
+            <Button type="submit" variant="outline-secondary"> Add Expense </Button>
+            </form>
+            ) : null}       
+        </section>
 
-        <label htmlFor="amount">Amount</label>
-            <input type="text" name="amount" placeholder="Ej: 1500" />
-
-        <label htmlFor="date">Date</label>
-            <input type="date" name="date" min="2020-01-01" max="2022-12-31" />
-
-        <Button type="submit" variant="outline-secondary"> Submit </Button>
-    </form>
+        {select === 1 ? (<IncomeForm />) : null}
+        {select === 2 ? (<ExpenseForm />) : null}
 
     </>
     );
