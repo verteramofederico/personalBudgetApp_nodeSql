@@ -28,6 +28,7 @@ function FormProps(props) {
         
         <label htmlFor="category">Category</label>
             <select name="category" >
+                <option value="0">undefined</option>
                 <option value="4">{props.category[0]}</option>
                 <option value="1">{props.category[1]}</option>
                 <option value="2">{props.category[2]}</option>

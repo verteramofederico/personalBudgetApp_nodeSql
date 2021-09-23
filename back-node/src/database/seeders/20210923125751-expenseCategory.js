@@ -2,24 +2,28 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-      await queryInterface.bulkInsert('ExpensesCategories', [{
-        id: 1,
+      await queryInterface.bulkInsert('ExpensesCategories', [
+        {
+          id: 1,
+          name: 'undefined',
+        },{
+        id: 2,
         name: 'House',
       },{
-        id: 2,
+        id: 3,
         name: 'Clothes',
       },{
-        id: 3,
+        id: 4,
         name: "Health"
       },{
-        id: 4,
+        id: 5,
         name: "Others expenses"
       }], {});
 
   },
 
   down: async (queryInterface, Sequelize) => {
-      await queryInterface.bulkDelete('ExpenseCategory', null, {});
+      await queryInterface.bulkDelete('ExpensesCategories', null, {});
 
   }
 };

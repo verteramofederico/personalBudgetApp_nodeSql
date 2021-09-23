@@ -40,7 +40,25 @@ function OrderedItem(props) {
             <Button type="submit" variant="outline-secondary">Edit</Button>
             </form>
 
-            {checkEdit!==0?(<EditItemForm/>):(null)}
+            {checkEdit!==0 && props.item.type === "Expense" ?(<EditItemForm 
+                id={id} 
+                type={type} 
+                concept={concept}
+                amount={amount}
+                categorySelected={category} 
+                category={[
+            "Other Exp.", "House","Clothes","Health"
+                ]} />):(null)}
+            
+            {checkEdit!==0 && props.item.type === "Income" ?(<EditItemForm 
+                id={id} 
+                type={type} 
+                concept={concept}
+                amount={amount}
+                categorySelected={category} 
+                category={[
+            "Other Income.", "Job","Freelance","Donations"
+                ]} />):(null)}
 
             <form onSubmit={handleSubmitDelete}>
             <Button type="submit" variant="outline-secondary">Delete</Button>
