@@ -28,7 +28,7 @@ module.exports = (sequelize, dataTypes) => {
   const Expense = sequelize.define(alias,cols,config)
 
       Expense.associate = (models) =>{
-        Expense.belongsTo(models.ExpenseCategory, {
+        Expense.belongsTo(models.ExpensesCategories, {
         as: "ExpensesCategories",
         foreignKey: "categoriesId"
     })

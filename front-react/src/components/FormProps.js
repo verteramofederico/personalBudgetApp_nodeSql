@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import {Button} from 'react-bootstrap';
 
 function FormProps(props) {
@@ -12,13 +12,21 @@ function FormProps(props) {
                     amount: e.target.amount.value,
                     date: e.target.date.value,
                     categoriesId: e.target.category.value,
-                });
+                });        
+        }
+        
+        useEffect(() => {
+            /* console.log(data) */
             fetch('http://localhost:3001/api/create', {
                 method: 'POST',
-                body: JSON.stringify({ data }),
+                body:  JSON.stringify(data),
                 headers: { 'Content-Type': 'application/json' },
-            })           
-                } 
+            })
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response))         
+        }, [data])
+
                 
     return (
     <>

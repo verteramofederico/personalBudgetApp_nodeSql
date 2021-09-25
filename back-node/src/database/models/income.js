@@ -32,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
   const Income = sequelize.define(alias,cols,config)
 
   Income.associate = (models) =>{
-      Income.belongsTo(models.IncomeCategory, {
+      Income.belongsTo(models.IncomesCategories, {
       as: "IncomesCategories",
       foreignKey: "categoriesId"
   })

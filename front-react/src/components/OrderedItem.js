@@ -9,9 +9,11 @@ function OrderedItem(props) {
     let id = props.item.id
     let type = props.item.type
     let amount = props.item.amount
-    let category = props.item.categoriesId
     let concept = props.item.concept
     let date = props.item.date
+    let category = "undefined"
+    if (props.item.IncomesCategories) {category = props.item.IncomesCategories.name}
+    if (props.item.ExpensesCategories) {category = props.item.ExpensesCategories.name}
 
     const [checkEdit, setcheckEdit] = useState (0)
 

@@ -34,7 +34,9 @@ function ShowListItem(props) {
     return (
     <section className="table">
         <section className="table">
-        <h3>Last 10</h3>
+        {props.option === 0 ? (<h3>Last 10</h3>) : null }
+        {props.option === 1 ? (<h3>Incomes</h3>) : null }
+        {props.option === 2 ? (<h3>Expenses</h3>) : null }
         <div className="">
         <Table striped bordered hover>
         <thead>

@@ -3,17 +3,17 @@ const db = require('../../database/models');
 const sequelize = require("sequelize");
 const { Op } = sequelize;
 
-
+const express = require("express");
 
 const APIController = {
     index: async (req, res) => {
         try {
             const incomes = await db.Income.findAll({
-                //include: 'IncomesCategories',
-                where:{active: 1}})  
+                include: ["IncomesCategories"],
+                where:{active: 1} })
             const expenses = await db.Expense.findAll({
-                //include: 'ExpensesCategories',
-                where:{active: 1}})
+                include: ["ExpensesCategories"],
+                where:{active: 1} })
 
             incomes.forEach(income =>{
                 income.dataValues.type= "Income";
@@ -42,8 +42,8 @@ const APIController = {
         }
     },
     store: async (req, res) => {
-        try {
-            console.log(req.body)
+        console.log(req)
+        /* try {
             if (req.body.type === 'income') {
                     const income = await db.Income.create({
                     concept: req.body.concept,
@@ -64,7 +64,7 @@ const APIController = {
             }
         catch (error) {
                 res.send(error)
-            }
+            } */
         }, 
 }
 
