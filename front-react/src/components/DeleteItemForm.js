@@ -14,7 +14,6 @@ function DeleteItemForm(props) {
             }
 
         useEffect(() => {
-            console.log(data)
             fetch(`http://localhost:3001/api/delete/${data.id}`, {
                 method: 'PUT',
                 body:  JSON.stringify(data),

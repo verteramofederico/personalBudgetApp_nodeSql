@@ -38,16 +38,15 @@ const APIController = {
                     concept: req.body.concept,
                     amount: req.body.amount,
                     date: req.body.date,
-                    categoriesId: req.body.category
+                    categoriesId: req.body.categoriesId
                 })
-            }
-            
+            }       
             if (req.body.type === 'expense') {
                     const expenses = await db.Expense.create({
                     concept: req.body.concept,
                     amount: req.body.amount,
                     date: req.body.date,
-                    categoriesId: req.body.category
+                    categoriesId: req.body.categoriesId
                 })
             }
             }
