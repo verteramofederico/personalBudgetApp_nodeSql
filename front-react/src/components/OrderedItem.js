@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
 import './IncomesExpenses.css'
 import EditItemForm from './EditItemForm'
+import DeleteItemForm from './DeleteItemForm'
 import {Button} from 'react-bootstrap';
 
 
@@ -12,10 +13,12 @@ function OrderedItem(props) {
     let concept = props.item.concept
     let date = props.item.date
     let category = "undefined"
+    let categoryId = props.item.categoryId
     if (props.item.IncomesCategories) {category = props.item.IncomesCategories.name}
     if (props.item.ExpensesCategories) {category = props.item.ExpensesCategories.name}
 
     const [checkEdit, setcheckEdit] = useState (0)
+    const [checkDelete, setcheckDelete] = useState (0)
 
     function handleSubmitEdit(e) {
         e.preventDefault();
@@ -24,6 +27,7 @@ function OrderedItem(props) {
     
     function handleSubmitDelete(e) {
         e.preventDefault();
+        if (checkDelete ===0) {setcheckDelete(1)} else {setcheckDelete(0)} 
     }
 
     return (
@@ -39,7 +43,7 @@ function OrderedItem(props) {
             <td className="dateTable">{date}</td>
             <td>
             <form onSubmit={handleSubmitEdit}>
-            <Button type="submit" variant="outline-secondary">Edit</Button>
+            {checkDelete ===0 ? <Button type="submit" variant="outline-secondary">Edit</Button> : null}
             </form>
 
             {checkEdit!==0 && props.item.type === "Expense" ?(<EditItemForm 
@@ -47,24 +51,25 @@ function OrderedItem(props) {
                 type={type} 
                 concept={concept}
                 amount={amount}
-                categorySelected={category} 
-                category={[
-            "Other Exp.", "House","Clothes","Health"
-                ]} />):(null)}
+                categoryId={categoryId}
+                />):(null)}
             
             {checkEdit!==0 && props.item.type === "Income" ?(<EditItemForm 
                 id={id} 
                 type={type} 
                 concept={concept}
                 amount={amount}
-                categorySelected={category} 
-                category={[
-            "Other Income.", "Job","Freelance","Donations"
-                ]} />):(null)}
+                categoryId={categoryId}
+                />):(null)}
 
             <form onSubmit={handleSubmitDelete}>
-            <Button type="submit" variant="outline-secondary">Delete</Button>
+            {checkEdit ===0 ? <Button type="submit" variant="outline-secondary">Delete</Button> : null}
             </form>
+
+            {checkDelete!==0 && props.item.type === "Expense" ?(<DeleteItemForm id={id} type={type} />):(null)}
+            
+            {checkDelete!==0 && props.item.type === "Income" ?(<DeleteItemForm id={id} type={type}  />):(null)}
+            
             </td>
             </tr>
             )

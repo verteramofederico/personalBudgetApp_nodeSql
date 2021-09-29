@@ -3,19 +3,7 @@ import {Button, Alert} from 'react-bootstrap';
 
 function FormProps(props) {
     const [data, setData] = useState ([])
-    const [errors, setErrors] = useState ()
-
-        useEffect(() => {
-            console.log(data)
-            fetch('http://localhost:3001/api/create', {
-                method: 'POST',
-                body:  JSON.stringify(data),
-                headers: { 'Content-Type': 'application/json' },
-            })
-            .then(res => res.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => console.log('Success:', response))         
-        }, [data])
+    const [errors, setErrors] = useState ([])
 
         function handleSubmitEdit (e) {
             e.preventDefault()
@@ -36,7 +24,18 @@ function FormProps(props) {
                 }    
         }
 
-                
+        useEffect(() => {
+            console.log(data) 
+            fetch('http://localhost:3001/api/create', {
+                method: 'POST',
+                body:  JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response))         
+        }, [data])
+        
     return (
     <>
 

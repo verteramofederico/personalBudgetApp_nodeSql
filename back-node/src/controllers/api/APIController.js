@@ -30,22 +30,11 @@ const APIController = {
             throw error;
         }
     },
-    detail: async (req, res) => {
-        try {
-            const income = await db.Income.findByPk(req.params.id);
-
-            res.json({
-                income: {income}
-            })
-        } catch (error) {
-            throw error;
-        }
-    },
     store: async (req, res) => {
         console.log(req.body)
-        /* try {
+        try {
             if (req.body.type === 'income') {
-                    const income = await db.Income.create({
+                    const incomes = await db.Income.create({
                     concept: req.body.concept,
                     amount: req.body.amount,
                     date: req.body.date,
@@ -54,7 +43,7 @@ const APIController = {
             }
             
             if (req.body.type === 'expense') {
-                    const income = await db.Expense.create({
+                    const expenses = await db.Expense.create({
                     concept: req.body.concept,
                     amount: req.body.amount,
                     date: req.body.date,
@@ -64,8 +53,59 @@ const APIController = {
             }
         catch (error) {
                 res.send(error)
-            } */
+            } 
         }, 
+    modifier: async (req, res) => {
+        console.log(req.body)
+        try {
+            let idParams = req.params.id;
+            if (req.body.type === 'Income') {
+                    const income = await db.Income.update({
+                        concept: req.body.concept,
+                        amount: req.body.amount,
+                        date: req.body.date,
+                },{
+                    where: {id: idParams}
+                })
+            }
+            if (req.body.type === 'Expense') {
+                    const expense = await db.Expense.update({
+                        concept: req.body.concept,
+                        amount: req.body.amount,
+                        date: req.body.date,
+                },{
+                    where: {id: idParams}
+                })
+            }
+            }
+        catch (error) {
+                res.send(error)
+            }
+    }
+    , 
+    delete: async (req, res) => {
+        console.log(req.body)
+        try {
+            let idParams = req.params.id;
+            if (req.body.type === 'Income') {
+                    const income = await db.Income.update({
+                        active: 0
+                },{
+                    where: {id: idParams}
+                })
+            }
+            if (req.body.type === 'Expense') {
+                    const expense = await db.Expense.update({
+                        active: 0
+                },{
+                    where: {id: idParams}
+                })
+            }
+            }
+        catch (error) {
+                res.send(error)
+            }
+    }
 }
 
 module.exports = APIController;

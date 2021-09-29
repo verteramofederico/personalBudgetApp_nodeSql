@@ -4,7 +4,8 @@ const APIController = require('../../controllers/api/APIController');
 
 //Rutas
 router.get('/', APIController.index);
-router.get('/:id', APIController.detail);
 router.post("/create", APIController.store);
+router.put("/modifier/:id", APIController.modifier);
+router.put('/delete/:id', APIController.delete); 
 
 module.exports = router;
