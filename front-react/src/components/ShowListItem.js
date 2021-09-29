@@ -6,6 +6,7 @@ import OrderedItem from "./OrderedItem"
 function ShowListItem(props) {
     const [expensesApi, setExpensesApi] = useState ([])
     const [incomesApi, setIncomesApi] = useState ([])
+    const [filterCategory, setFilterCategory] = useState ("All")
 
     useEffect(() => {
         fetch("http://localhost:3001/api/")
@@ -31,12 +32,44 @@ function ShowListItem(props) {
         return 0;
     })
 
+    function filterFunction (e) {
+        setFilterCategory(e.target.value)
+    }
+
+    let filteredIncomes = listAllInOrder.filter(item =>
+        item.IncomesCategories ? item.IncomesCategories.name === filterCategory : null
+        )
+    let filteredExpenses = listAllInOrder.filter(item =>
+        item.ExpensesCategories ? item.ExpensesCategories.name === filterCategory : null
+        )
+    
+    let listAllInOrderbyCategories = []
+    if (filterCategory ==="All") {listAllInOrderbyCategories = listAllInOrder}
+    if (filteredExpenses.length > 0) {listAllInOrderbyCategories = filteredExpenses}
+    if (filteredIncomes.length > 0) {listAllInOrderbyCategories = filteredIncomes}
+
     return (
     <section className="table">
         <section className="table">
         {props.option === 0 ? (<h3>Last 10</h3>) : null }
         {props.option === 1 ? (<h3>Incomes</h3>) : null }
         {props.option === 2 ? (<h3>Expenses</h3>) : null }
+        <form>
+            <label>Category</label>
+                <select 
+                    onChange={filterFunction}>
+                    <option value="All">All</option>
+                    <option value="undefined">Undefined</option>
+                    <option value="Job">Job</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Donations">Donations</option>
+                    <option value="Other incomes">Other incomes</option>
+                    <option value="House">House</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Health">Health</option>
+                    <option value="Other expenses">Other expenses</option>
+                </select>
+        </form>
         <div className="">
         <Table striped bordered hover>
         <thead>
@@ -62,8 +95,8 @@ function ShowListItem(props) {
             </tr>
         </tfoot>
         <tbody>
-            {props.option === 0 && listAllInOrder.length > 0 ? (
-                listAllInOrder.map( (row, i) => {
+            {props.option === 0 && listAllInOrderbyCategories.length > 0 ? (
+                listAllInOrderbyCategories.map( (row, i) => {
                     return <OrderedItem key={i} item={row} />
                 })
             ) : null } 

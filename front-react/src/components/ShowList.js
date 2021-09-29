@@ -24,7 +24,6 @@ function BodyApp() {
         else {setToShow(0) } 
     }
 
-
     return (
     <>
         <section className="formButtons">
@@ -41,6 +40,7 @@ function BodyApp() {
         {toShow === 3? (<ShowListItem option={0}/>):(null)}
         {toShow === 1? (<ShowListItem option={1}/>):(null)}
         {toShow === 2? (<ShowListItem option={2}/>):(null)}
+        {toShow === 4? (<ShowListItem option={3}/>):(null)}
     </>
     );
 }

@@ -4,7 +4,7 @@ import {Button} from 'react-bootstrap';
 function FormProps(props) {
     const [data, setData] = useState ([])
 
-    function handleSubmitEdit (e) {
+    /* function handleSubmitEdit (e) {
             e.preventDefault()
             setData({
                     type: props.type,
@@ -13,10 +13,10 @@ function FormProps(props) {
                     date: e.target.date.value,
                     categoriesId: e.target.category.value,
                 });        
-        }
+        } */
         
         useEffect(() => {
-            /* console.log(data) */
+            console.log(data)
             fetch('http://localhost:3001/api/create', {
                 method: 'POST',
                 body:  JSON.stringify(data),
@@ -26,6 +26,24 @@ function FormProps(props) {
             .catch(error => console.error('Error:', error))
             .then(response => console.log('Success:', response))         
         }, [data])
+
+
+        function handleSubmitEdit (e) {
+            e.preventDefault()
+            if (!e.target.concept.value) {
+                console.log(e.target.concept.value)}
+            if (!e.target.amount.value) {console.log(e.target.concept.value)}
+            if (!e.target.date.value) {console.log(e.target.date.value)}
+            else {
+                    setData({
+                        type: props.type,
+                        concept: e.target.concept.value,
+                        amount: e.target.amount.value,
+                        date: e.target.date.value,
+                        categoriesId: e.target.category.value,
+                    })
+                }    
+        }
 
                 
     return (

@@ -42,7 +42,7 @@ const APIController = {
         }
     },
     store: async (req, res) => {
-        console.log(req)
+        console.log(req.body)
         /* try {
             if (req.body.type === 'income') {
                     const income = await db.Income.create({
