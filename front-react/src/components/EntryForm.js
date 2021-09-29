@@ -4,7 +4,6 @@ import "./EntryForm.css"
 import FormProps from "./FormProps"
 
 function EntryForm() {
-
     const [select, setSelect] = useState (0)
 
         function selectIncomeAdd(e) {

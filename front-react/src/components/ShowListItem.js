@@ -48,6 +48,14 @@ function ShowListItem(props) {
     if (filteredExpenses.length > 0) {listAllInOrderbyCategories = filteredExpenses}
     if (filteredIncomes.length > 0) {listAllInOrderbyCategories = filteredIncomes}
 
+    let listFilterIncomes = []
+    if (filterCategory ==="All") {listFilterIncomes = incomesApi}
+    if (filteredIncomes.length > 0) {listFilterIncomes = filteredIncomes}
+
+    let listFilterExpenses = []
+    if (filterCategory ==="All") {listFilterExpenses = expensesApi}
+    if (filteredExpenses.length > 0) {listFilterExpenses = filteredExpenses}
+
     return (
     <section className="table">
         <section className="table">
@@ -55,7 +63,7 @@ function ShowListItem(props) {
         {props.option === 1 ? (<h3>Incomes</h3>) : null }
         {props.option === 2 ? (<h3>Expenses</h3>) : null }
         <form>
-            <label>Category</label>
+            <label>Filter by Category </label>
                 <select 
                     onChange={filterFunction}>
                     <option value="All">All</option>
@@ -100,13 +108,13 @@ function ShowListItem(props) {
                     return <OrderedItem key={i} item={row} />
                 })
             ) : null } 
-            {props.option === 1 && incomesApi.length > 0  ? (
-                incomesApi.map( (row, i) => {
+            {props.option === 1 && listFilterIncomes.length > 0  ? (
+                listFilterIncomes.map( (row, i) => {
                     return <OrderedItem key={i} item={row} />
                 })
             ) : null } 
-            {props.option === 2 && expensesApi.length > 0 ? (
-                expensesApi.map( (row, i) => {
+            {props.option === 2 && listFilterExpenses.length > 0 ? (
+                listFilterExpenses.map( (row, i) => {
                     return <OrderedItem key={i} item={row} />
                 })
             ): null } 

@@ -1,20 +1,10 @@
 import {React, useState, useEffect} from 'react';
-import {Button} from 'react-bootstrap';
+import {Button, Alert} from 'react-bootstrap';
 
 function FormProps(props) {
     const [data, setData] = useState ([])
+    const [errors, setErrors] = useState ()
 
-    /* function handleSubmitEdit (e) {
-            e.preventDefault()
-            setData({
-                    type: props.type,
-                    concept: e.target.concept.value,
-                    amount: e.target.amount.value,
-                    date: e.target.date.value,
-                    categoriesId: e.target.category.value,
-                });        
-        } */
-        
         useEffect(() => {
             console.log(data)
             fetch('http://localhost:3001/api/create', {
@@ -27,13 +17,11 @@ function FormProps(props) {
             .then(response => console.log('Success:', response))         
         }, [data])
 
-
         function handleSubmitEdit (e) {
             e.preventDefault()
-            if (!e.target.concept.value) {
-                console.log(e.target.concept.value)}
-            if (!e.target.amount.value) {console.log(e.target.concept.value)}
-            if (!e.target.date.value) {console.log(e.target.date.value)}
+            if (!e.target.concept.value || !e.target.amount.value || !e.target.date.value) {
+                setErrors("You must entry concept, amount and date")
+            }
             else {
                     setData({
                         type: props.type,
@@ -42,6 +30,9 @@ function FormProps(props) {
                         date: e.target.date.value,
                         categoriesId: e.target.category.value,
                     })
+                    setErrors("")
+                    e.target.concept.value = ""; e.target.amount.value = "";
+                    e.target.date.value = ""; e.target.category.value = "0"
                 }    
         }
 
@@ -72,6 +63,7 @@ function FormProps(props) {
 
         <Button type="submit" variant="outline-secondary"> Submit </Button>
     </form>
+        {errors.length > 0 ? <Alert variant='danger'>{errors}</Alert> : null}
 
     </>
     );
