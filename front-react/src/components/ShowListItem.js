@@ -13,14 +13,14 @@ function ShowListItem(props) {
         .then((response) => response.json())
         .then((data) => {
             setExpensesApi(data.expenses.expenses)})
-        }, []);
+        }, [expensesApi]);
     
     useEffect(() => {
         fetch("http://localhost:3001/api/")
         .then((response) => response.json())
         .then((data) => {
             setIncomesApi(data.incomes.incomes)})
-            }, []);
+            }, [incomesApi]);
     
     let listAll = [...expensesApi, ...incomesApi] 
 

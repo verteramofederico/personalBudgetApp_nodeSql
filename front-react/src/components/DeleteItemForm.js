@@ -1,11 +1,9 @@
 import {React, useState, useEffect} from 'react';
 import {Button} from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';  
 
 function DeleteItemForm(props) {
 
     const [data, setData] = useState ([])
-    const [toRedirect, settoRedirect] = useState (0)
 
     function handleSubmitEdit (e) {
             e.preventDefault()
@@ -13,7 +11,6 @@ function DeleteItemForm(props) {
                     type: props.type,
                     id: e.target.id.value
                 }) 
-            settoRedirect(1)
             }
     
 
@@ -38,7 +35,6 @@ function DeleteItemForm(props) {
 
         <Button type="submit" variant="outline-danger"> Confirme Delete </Button>
         </form>
-        {toRedirect !==0  ? <Redirect to="/" /> : null }
     </>
     );
 }

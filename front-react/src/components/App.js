@@ -2,7 +2,7 @@ import BodyWelcome from './BodyWelcome'
 import NavBar from './NavBar'
 import BodyApp from './BodyApp'
 import "./App.css"
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     <div className="container">    
       <NavBar/>  
       <BodyWelcome/> 
-      <BodyApp/> 
+      <Route path="/"> <BodyApp/> </Route >
       <NavBar/>  
     </div>
     </BrowserRouter>

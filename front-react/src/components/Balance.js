@@ -10,7 +10,7 @@ function Balance() {
         .then((response) => response.json())
         .then((data) => {
             setExpensesApi(data.expenses.expenses)})
-        }, []);
+        }, [expensesApi]);
 
     const [incomesApi, setIncomesApi] = useState ([])
 
@@ -19,7 +19,7 @@ function Balance() {
         .then((response) => response.json())
         .then((data) => {
             setIncomesApi(data.incomes.incomes)})
-            }, []);
+            }, [incomesApi]);
     
     let totalIncomes = 0
     if (incomesApi.length > 0) {

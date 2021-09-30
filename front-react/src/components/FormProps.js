@@ -1,11 +1,9 @@
 import {React, useState, useEffect} from 'react';
 import {Button, Alert} from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
 
 function FormProps(props) {
     const [data, setData] = useState ([])
     const [errors, setErrors] = useState ([])
-    const [toRedirect, settoRedirect] = useState (0)
 
         function handleSubmitEdit (e) {
             e.preventDefault()
@@ -23,7 +21,6 @@ function FormProps(props) {
                     setErrors("Submitted")
                     e.target.concept.value = ""; e.target.amount.value = "";
                     e.target.date.value = ""; e.target.category.value = "0"
-                    settoRedirect(1)
                 }    
         }
 
@@ -67,7 +64,6 @@ function FormProps(props) {
         {errors.length > 15 ? <Alert variant='danger'>{errors}</Alert> : null}
         {errors === "Submitted" ? <Alert variant='success'>{errors}</Alert> : null}
 
-        {toRedirect !==0  ? <Redirect to="/" /> : null }
     </>
     );
 }

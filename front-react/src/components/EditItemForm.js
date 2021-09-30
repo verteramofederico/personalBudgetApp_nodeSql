@@ -1,11 +1,9 @@
 import {React, useState, useEffect} from 'react';
 import {Button, Alert} from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';  
 
 function EditItemFrom(props) {
     const [data, setData] = useState ([])
     const [errors, setErrors] = useState ([])
-    const [toRedirect, settoRedirect] = useState (0)
 
     function handleSubmitEdit (e) {
             e.preventDefault()
@@ -24,8 +22,7 @@ function EditItemFrom(props) {
             setErrors("")
                     e.target.concept.value = ""; e.target.amount.value = "";
                     e.target.date.value = ""
-                }  
-            settoRedirect(1)         
+                }      
             } 
 
         useEffect(() => {
@@ -60,7 +57,6 @@ function EditItemFrom(props) {
     </form>
     {errors.length > 0 ? <Alert variant='danger'>{errors}</Alert> : null}
 
-    {toRedirect !==0  ? <Redirect to="/" /> : null }
     </>
     );
 }
