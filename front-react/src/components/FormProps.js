@@ -1,9 +1,11 @@
 import {React, useState, useEffect} from 'react';
 import {Button, Alert} from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 function FormProps(props) {
     const [data, setData] = useState ([])
     const [errors, setErrors] = useState ([])
+    const [toRedirect, settoRedirect] = useState (0)
 
         function handleSubmitEdit (e) {
             e.preventDefault()
@@ -18,14 +20,14 @@ function FormProps(props) {
                         date: e.target.date.value,
                         categoriesId: e.target.category.value,
                     })
-                    setErrors("")
+                    setErrors("Submitted")
                     e.target.concept.value = ""; e.target.amount.value = "";
                     e.target.date.value = ""; e.target.category.value = "0"
+                    settoRedirect(1)
                 }    
         }
 
         useEffect(() => {
-            console.log(data) 
             fetch('http://localhost:3001/api/create', {
                 method: 'POST',
                 body:  JSON.stringify(data),
@@ -44,11 +46,11 @@ function FormProps(props) {
         
         <label htmlFor="category">Category</label>
             <select name="category" >
-                <option value="0">undefined</option>
-                <option value="4">{props.category[0]}</option>
-                <option value="1">{props.category[1]}</option>
-                <option value="2">{props.category[2]}</option>
-                <option value="3">{props.category[3]}</option>                
+                <option value="1">undefined</option>
+                <option value="5">{props.category[0]}</option>
+                <option value="2">{props.category[1]}</option>
+                <option value="3">{props.category[2]}</option>
+                <option value="4">{props.category[3]}</option>                
             </select>
 
         <label htmlFor="concept">Concept</label>
@@ -62,8 +64,10 @@ function FormProps(props) {
 
         <Button type="submit" variant="outline-secondary"> Submit </Button>
     </form>
-        {errors.length > 0 ? <Alert variant='danger'>{errors}</Alert> : null}
+        {errors.length > 15 ? <Alert variant='danger'>{errors}</Alert> : null}
+        {errors === "Submitted" ? <Alert variant='success'>{errors}</Alert> : null}
 
+        {toRedirect !==0  ? <Redirect to="/" /> : null }
     </>
     );
 }

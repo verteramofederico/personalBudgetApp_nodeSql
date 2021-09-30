@@ -2,6 +2,7 @@ import {React} from 'react';
 import Balance from "./Balance"
 import EntryForm from './EntryForm'
 import ShowList from './ShowList'
+import { Route } from 'react-router-dom';
 
 function BodyApp() {
     return (
@@ -13,9 +14,8 @@ function BodyApp() {
         <EntryForm/>
         </section>
         <section className="container">
-        <ShowList/>
+        <Route path="/"> <ShowList/> </Route >
         </section> 
-
     </>
     );
 }

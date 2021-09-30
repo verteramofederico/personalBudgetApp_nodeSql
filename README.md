@@ -6,7 +6,9 @@ https://trello.com/b/1Oe6pl94/personalbudgetappnodesql
 ### Backend
 Node server running in: http://localhost:3001/
 "npm start" in "/back-node"
-Plase run sequelize seeders to have categories
+Set your password in the sequelize config
+Please run sequelize seeders to have categories
+
 
 
 ### Frontend

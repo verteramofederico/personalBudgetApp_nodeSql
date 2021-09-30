@@ -59,9 +59,11 @@ function ShowListItem(props) {
     return (
     <section className="table">
         <section className="table">
+        
         {props.option === 0 ? (<h3>Last 10</h3>) : null }
         {props.option === 1 ? (<h3>Incomes</h3>) : null }
         {props.option === 2 ? (<h3>Expenses</h3>) : null }
+
         <form>
             <label>Filter by Category </label>
                 <select 
@@ -78,36 +80,39 @@ function ShowListItem(props) {
                     <option value="Other expenses">Other expenses</option>
                 </select>
         </form>
+
         <div className="">
-        <Table striped bordered hover>
-        <thead>
-            <tr>
-            <th>#</th>
-            <th>Type</th>
-            <th>Concept</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th className="dateTable">Date</th>
-            <th>Modify</th>
-            </tr>
-        </thead>
-        <tfoot className="bottonTable">
-            <tr>
-            <th>#</th>
-            <th>Type</th>
-            <th>Concept</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th className="dateTable">Date</th>
-            <th>Modify</th>
-            </tr>
-        </tfoot>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Type</th>
+                    <th>Concept</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th className="dateTable">Date</th>
+                    <th>Modify</th>
+                    </tr>
+                </thead>
+                <tfoot className="bottonTable">
+                    <tr>
+                    <th>#</th>
+                    <th>Type</th>
+                    <th>Concept</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th className="dateTable">Date</th>
+                    <th>Modify</th>
+                    </tr>
+                </tfoot>
+
         <tbody>
+
             {props.option === 0 && listAllInOrderbyCategories.length > 0 ? (
-                listAllInOrderbyCategories.map( (row, i) => {
+                listAllInOrderbyCategories.slice(0,9).map( (row, i) => {
                     return <OrderedItem key={i} item={row} />
                 })
-            ) : null } 
+            ) : null }
             {props.option === 1 && listFilterIncomes.length > 0  ? (
                 listFilterIncomes.map( (row, i) => {
                     return <OrderedItem key={i} item={row} />
@@ -117,12 +122,13 @@ function ShowListItem(props) {
                 listFilterExpenses.map( (row, i) => {
                     return <OrderedItem key={i} item={row} />
                 })
-            ): null } 
+            ): null }
+
         </tbody>
         </Table>
         </div>
 
-    </section>
+        </section>
     </section>
     );
 }

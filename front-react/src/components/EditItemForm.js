@@ -1,9 +1,11 @@
 import {React, useState, useEffect} from 'react';
 import {Button, Alert} from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';  
 
 function EditItemFrom(props) {
     const [data, setData] = useState ([])
     const [errors, setErrors] = useState ([])
+    const [toRedirect, settoRedirect] = useState (0)
 
     function handleSubmitEdit (e) {
             e.preventDefault()
@@ -22,11 +24,11 @@ function EditItemFrom(props) {
             setErrors("")
                     e.target.concept.value = ""; e.target.amount.value = "";
                     e.target.date.value = ""
-                }           
+                }  
+            settoRedirect(1)         
             } 
 
         useEffect(() => {
-            console.log(data)
             fetch(`http://localhost:3001/api/modifier/${data.id}`, {
                 method: 'PUT',
                 body:  JSON.stringify(data),
@@ -57,6 +59,8 @@ function EditItemFrom(props) {
         <Button type="submit" variant="outline-secondary"> Submit </Button>
     </form>
     {errors.length > 0 ? <Alert variant='danger'>{errors}</Alert> : null}
+
+    {toRedirect !==0  ? <Redirect to="/" /> : null }
     </>
     );
 }
